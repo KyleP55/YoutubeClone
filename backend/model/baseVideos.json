@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Pink Fluffy Dancer",
+        "videoPath": "videos/1000.mp4",
+        "thumbnailPath": "thumbnails/1000.png",
+        "uploader": "User1",
+        "runTime": "0:11"
+    },
+    {
+        "name": "Surfer",
+        "videoPath": "videos/1001.mp4",
+        "thumbnailPath": "thumbnails/1001.png",
+        "uploader": "User1",
+        "runTime": "0:10"
+    },
+    {
+        "name": "City View",
+        "videoPath": "videos/1002.mp4",
+        "thumbnailPath": "thumbnails/1002.png",
+        "uploader": "User1",
+        "runTime": "0:11"
+    },
+    {
+        "name": "Video Effects",
+        "videoPath": "videos/1003.mp4",
+        "thumbnailPath": "thumbnails/1003.png",
+        "uploader": "User1",
+        "runTime": "0:13"
+    },
+    {
+        "name": "Owl in Nature",
+        "videoPath": "videos/1004.mp4",
+        "thumbnailPath": "thumbnails/1004.png",
+        "uploader": "User1",
+        "runTime": "0:21"
+    },
+    {
+        "name": "WoW Classic Cow",
+        "videoPath": "videos/1005.mp4",
+        "thumbnailPath": "thumbnails/1005.png",
+        "uploader": "User2",
+        "runTime": "0:07"
+    },
+    {
+        "name": "Pink Fluffy Dancer",
+        "videoPath": "videos/1000.mp4",
+        "thumbnailPath": "thumbnails/1000.png",
+        "uploader": "User1",
+        "runTime": "0:11"
+    },
+    {
+        "name": "Surfer",
+        "videoPath": "videos/1001.mp4",
+        "thumbnailPath": "thumbnails/1001.png",
+        "uploader": "User1",
+        "runTime": "0:10"
+    },
+    {
+        "name": "City View",
+        "videoPath": "videos/1002.mp4",
+        "thumbnailPath": "thumbnails/1002.png",
+        "uploader": "User1",
+        "runTime": "0:11"
+    },
+    {
+        "name": "Video Effects",
+        "videoPath": "videos/1003.mp4",
+        "thumbnailPath": "thumbnails/1003.png",
+        "uploader": "User1",
+        "runTime": "0:13"
+    },
+    {
+        "name": "Owl in Nature",
+        "videoPath": "videos/1004.mp4",
+        "thumbnailPath": "thumbnails/1004.png",
+        "uploader": "User1",
+        "runTime": "0:21"
+    },
+    {
+        "name": "WoW Classic Cow",
+        "videoPath": "videos/1005.mp4",
+        "thumbnailPath": "thumbnails/1005.png",
+        "uploader": "User2",
+        "runTime": "0:07"
+    }
+]

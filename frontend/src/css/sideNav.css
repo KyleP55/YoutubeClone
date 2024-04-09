@@ -1,0 +1,16 @@
+.sideNavContainer {
+    position: relative;
+    width: 250px;
+    float: left;
+    margin-left: 18px;
+    margin-right: 18px;
+    border-right-style: solid;
+    border-color: rgb(212, 212, 212);
+    border-width: 1px;
+    height: 100vh;
+    z-index: 2;
+}
+
+.logoImage{
+    width: 260px;
+}

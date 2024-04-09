@@ -1,0 +1,12 @@
+// Get all info
+GET http://localhost:3001/videos/allVideos
+
+###
+
+// Get single info
+GET http://localhost:3001/videos/info/66004b14bd2dd2f6572b97a5
+
+###
+
+// Get tn
+GET http://localhost:3001/videos/tn/thumbnails/1000.png

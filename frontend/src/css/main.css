@@ -1,0 +1,159 @@
+/* NavBar */
+.header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0px 2px 1px 2px #888888;
+    padding-left: 8px;
+    padding-top: 2px;
+    padding-right: 8px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+}
+.accountBars {
+    margin-right: 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: "#000";
+}
+.accountText {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+a {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Log in Box */
+.formPopUp {
+    position: absolute;
+    top: 60px;
+    right: 32px;
+    z-index: 9;
+}
+
+.formContainer {
+    width: 300px;
+    padding: 16px;
+    margin: 0px;
+    background-color: rgb(23, 231, 58);
+  }
+
+.formContainer input[type=text], .formContainer input[type=password] {
+    width: 100%;
+    padding: 8px;
+    margin-left: -8px;
+    border: none;
+    background: #f1f1f1;
+    margin-bottom: 16px;
+}
+
+/* Main Stuff */
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.homeVideoBox {
+    width: 70%;
+    float: left;
+}
+
+.videoGrid {
+    display: grid;
+    width: 100%;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 19%));
+}
+
+/* Video Cards */
+.videoCard {
+    display:block;
+    border-radius: 16px;
+    box-shadow: 2px 2px 1px 2px #888888;
+    padding: 8px;
+    margin-bottom: 16px;
+
+    max-width: 600px;
+    min-width: 200px;
+}
+.thumbnailImage {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 2px 2px 1px 1px #888888;
+}
+
+.horizontalVideoCard {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 16px;
+    box-shadow: 2px 2px 1px 2px #888888;
+    padding: 8px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+.horizontalThumbnailImage {
+    width: 50%;
+    max-width: 200px;
+    border-radius: 16px;
+    box-shadow: 2px 2px 1px 1px #888888;
+}
+.cardTextContainerHorizontal {
+    width: 50%;
+    text-align: center;
+}
+
+.cardTextContainer {
+    text-align: center;
+}
+
+.h1OR {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.pOR {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+
+.spaceBetween {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.videoContainer {
+    margin: 16px;
+    width: 70%;
+}
+.videoPlayer {
+    margin: 16px;
+    border-radius: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.sidePreviewContainer {
+    margin: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+/* Form Stuff */
+form {
+    width: 30%;
+    margin-left: 16px;
+    padding-top: 16px;
+    float: left;
+}
