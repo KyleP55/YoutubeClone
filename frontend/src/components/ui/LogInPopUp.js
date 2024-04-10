@@ -1,7 +1,7 @@
-function LogInPopUp({ toggle }) {
+function LogInPopUp({ toggle, submit }) {
     return (<>
         <div className="formPopUp">
-            <form className="formContainer">
+            <form className="formContainer popUpBorder">
                 <h1 className="h1OR">Login</h1><br />
 
                 <label><b>Email</b></label>
@@ -10,8 +10,10 @@ function LogInPopUp({ toggle }) {
                 <label><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required />
 
-                <button type="submit" className="btn">Login</button>
-                <button type="button" className="btn cancel" onClick={toggle}>Close</button>
+                <div className="formButtonContainer">
+                    <button type="submit" className="button">Login</button>
+                    <button type="button" className="button cancel" onClick={toggle}>Close</button>
+                </div>
             </form>
         </div>
     </>);

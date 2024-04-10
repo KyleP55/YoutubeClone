@@ -1,38 +1,4 @@
-/* NavBar */
-.header {
-    position: relative;
-    width: 100%;
-    height: 60px;
-    box-shadow: 0px 2px 1px 2px #888888;
-    padding-left: 8px;
-    padding-top: 2px;
-    padding-right: 8px;
-    display: flex;
-    justify-content: space-between;
-    z-index: 3;
-}
-.accountBars {
-    margin-right: 16px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: "#000";
-}
-.accountText {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin-left: 8px;
-    margin-right: 8px;
-}
-a {
-    text-decoration: none;
-    color: #000;
-    cursor: pointer;
-}
-
-/* Log in Box */
+/* Log in Box/ Form */
 .formPopUp {
     position: absolute;
     top: 60px;
@@ -43,9 +9,13 @@ a {
 .formContainer {
     width: 300px;
     padding: 16px;
-    margin: 0px;
-    background-color: rgb(23, 231, 58);
   }
+
+.popUpBorder {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 1px 2px #888888;
+    border-radius: 8px;
+}
 
 .formContainer input[type=text], .formContainer input[type=password] {
     width: 100%;
@@ -55,12 +25,36 @@ a {
     background: #f1f1f1;
     margin-bottom: 16px;
 }
+.formContainer label {
+    margin-left: -8px;
+}
+.formButtonContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.button {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 40%;
+    border-radius: 8px;
+}
+.cancel {
+    background-color: #f44336;
+}
+
+.button:hover {
+    opacity: 70%;
+}
 
 /* Main Stuff */
 .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: #04AA6D;
 }
 
 .homeVideoBox {
@@ -151,9 +145,18 @@ a {
 }
 
 /* Form Stuff */
-form {
+.quickForm {
     width: 30%;
     margin-left: 16px;
     padding-top: 16px;
     float: left;
+}
+
+.page {
+    overflow: auto;
+}
+
+.centerDiv {
+    margin-left: auto;
+    margin-right: auto;
 }

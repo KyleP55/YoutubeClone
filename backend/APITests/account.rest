@@ -1,0 +1,21 @@
+//Create 
+POST http://localhost:3001/Accounts/createAccount/ 
+Content-Type: application/json
+
+{
+
+    "name": "Bob", "dob": "07/21/1987", "email": "test@email.com", "password": "test1234", "accountRoll": "Basic"
+
+}
+
+###
+
+//Create 
+POST http://localhost:3001/Accounts/login/ 
+Content-Type: application/json
+
+{
+
+    "email": "test@email.com", "password": "test1234"
+
+}

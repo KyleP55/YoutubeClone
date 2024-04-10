@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { IoAddCircleOutline } from "react-icons/io5";
+import axios from "axios";
 
 import logo from "../../images/logo.png";
 import LogInPopUp from "./LogInPopUp";
+
+import "../../css/header.css";
 
 function Header() {
     const [logInWindow, setLogInWindow] = useState(false);
@@ -16,22 +19,24 @@ function Header() {
         }
     }
 
-    useEffect(() => { console.log(logInWindow) }, [logInWindow])
+    function submitHandler(email, password) {
+
+    }
 
     return (<>
         <div className="header">
             <div className="logo">
                 <Link to='/'><img className="logoImage" src={logo} alt="Logo" /></Link>
             </div>
-            <div className="navBar">
+            <div className="searchBar">
 
             </div>
             <div className="accountBars">
-                {logInWindow && <LogInPopUp toggle={toggleWindow} />}
+                {logInWindow && <LogInPopUp toggle={toggleWindow} submit={submitHandler} />}
                 <a onClick={toggleWindow} className="accountText">
                     Log In
                 </a>
-                <Link to="/createAccount" className="accountText">
+                <Link to="/account/login" className="accountText">
                     Create Account
                 </Link>
                 <Link to="/upload">

@@ -4,10 +4,10 @@
     float: left;
     margin-left: 18px;
     margin-right: 18px;
-    border-right-style: solid;
+    /*border-right-style: solid;
     border-color: rgb(212, 212, 212);
-    border-width: 1px;
-    height: 100vh;
+    border-width: 1px; */
+    height: 100vh - 60px;
     z-index: 2;
 }
 
