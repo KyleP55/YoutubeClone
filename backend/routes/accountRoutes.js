@@ -69,9 +69,26 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Check if Email exists
+router.get('/checkEmail', async (req, res) => {
+    const b = req.body;
+    const check = await accountSchema.find({ email: b.email }, { email: true });
+    if (check) return res.status(200).json({ emailTaken: true });
+    return res.status(200).json({ emailTaken: false });
+});
+
+// Check if user name exists
+router.get('/checkUserName', async (req, res) => {
+    const b = req.body;
+    const check = await accountSchema.find({ userName: b.userName }, { userName: true });
+    if (check) return res.status(200).json({ nameTaken: true });
+    return res.status(200).json({ nameTaken: false });
+});
+
 //Generate Token
 function generateToken(sig) {
     return jwt.sign(sig, process.env.JWT_CODE, { expiresIn: '30s' });
 }
+
 
 module.exports = router;
