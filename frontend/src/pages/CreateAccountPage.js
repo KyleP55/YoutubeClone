@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
-import VideoPreview from '../components/ui/VideoPreview';
 import SideNav from '../components/ui/SideNav';
 
-import { emailVali, passVali, passMatch, userVali } from '../util/formValidation';
+import { emailVali, passVali, passMatch, userVali, dobVali } from '../util/formValidation';
 
 function CreateAccountPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [name, setName] = useState('');
-    const [error, setError] = useState([null, null, null, null]);
+    const [dob, setDoB] = useState()
+    const [error, setError] = useState([null, null, null, null, null]);
 
     // Submit button
     async function onSubmitHandler(e) {
@@ -20,13 +20,33 @@ function CreateAccountPage() {
         const emailRes = await emailVali(email);
         const userRes = await userVali(name);
 
+        // Check Validation/Set errors
         const newError = error.map((err, i) => {
             if (i === 0) return (emailRes);
             if (i === 1) return (passVali(password));
             if (i === 2) return (passMatch(password, confirmPassword));
             if (i === 3) return (userRes);
+            if (i === 4) return (dobVali(dob));
         });
         setError(newError);
+
+        // Check if any errors exists
+        let errors = false;
+        error.forEach((i) => { if (i != null) errors = true; });
+        if (errors) return;
+
+        // Submit New Account
+        const info = {
+            email: email,
+            password: password,
+            userName: name,
+            dob: dob
+        }
+
+        await axios.post('/accounts/createAccount', info)
+            .then((res) => {
+                console.log(res);
+            })
     }
 
     return (<>
@@ -47,7 +67,7 @@ function CreateAccountPage() {
 
                 <label>Password:</label>
                 <input
-                    type="text"
+                    type="password"
                     placeholder='Enter Password'
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
@@ -72,7 +92,13 @@ function CreateAccountPage() {
                 />
                 <p className='errorMessage'>{error[3]}</p>
 
-                {error && <p>{error}</p>}
+                <label>Date of Birth:</label>
+                <input
+                    type="date"
+                    onChange={(e) => setDoB(e.target.value)}
+                />
+                <p className='errorMessage'>{error[4]}</p>
+
                 <div className="formButtonContainer">
                     <button onClick={onSubmitHandler} className="button">Create</button>
                     <button type="reset" className="button cancel">Back</button>

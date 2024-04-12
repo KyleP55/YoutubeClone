@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
 
-    "name": "Bob", "dob": "07/21/1987", "email": "test@email.com", "password": "test1234", "accountRoll": "Basic"
+    "userName": "Bob", "dob": new Date(1991, 07, 11), "email": "test@email.com", "password": "test1234", "accountRoll": "Basic"
 
 }
 

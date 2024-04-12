@@ -34,8 +34,9 @@ router.post('/createAccount', async (req, res) => {
         const account = new accountSchema({
             email: b.email,
             password: hashedPass,
-            name: b.name,
+            userName: b.name,
             dob: encrypted,
+            roll: 'User'
         });
 
         const newAccount = await account.save();
@@ -70,7 +71,7 @@ router.post('/login', async (req, res) => {
 });
 
 // Check if Email exists
-router.get('/checkEmail', async (req, res) => {
+router.post('/checkEmail', async (req, res) => {
     const b = req.body;
     const check = await accountSchema.find({ email: b.email }, { email: true });
     if (check) return res.status(200).json({ emailTaken: true });
@@ -78,7 +79,7 @@ router.get('/checkEmail', async (req, res) => {
 });
 
 // Check if user name exists
-router.get('/checkUserName', async (req, res) => {
+router.post('/checkUserName', async (req, res) => {
     const b = req.body;
     const check = await accountSchema.find({ userName: b.userName }, { userName: true });
     if (check) return res.status(200).json({ nameTaken: true });
