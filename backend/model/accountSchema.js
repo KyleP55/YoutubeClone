@@ -19,7 +19,8 @@ const accountSchema = new mongoose.Schema({
     },
     accountRoll: {
         type: String,
-        require: false
+        require: false,
+        default: 'User'
     }
 });
 

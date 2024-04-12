@@ -34,9 +34,8 @@ router.post('/createAccount', async (req, res) => {
         const account = new accountSchema({
             email: b.email,
             password: hashedPass,
-            userName: b.name,
+            userName: b.userName,
             dob: encrypted,
-            roll: 'User'
         });
 
         const newAccount = await account.save();
@@ -74,7 +73,8 @@ router.post('/login', async (req, res) => {
 router.post('/checkEmail', async (req, res) => {
     const b = req.body;
     const check = await accountSchema.find({ email: b.email }, { email: true });
-    if (check) return res.status(200).json({ emailTaken: true });
+    console.log(check)
+    if (check[0]) return res.status(200).json({ emailTaken: true });
     return res.status(200).json({ emailTaken: false });
 });
 
@@ -82,7 +82,7 @@ router.post('/checkEmail', async (req, res) => {
 router.post('/checkUserName', async (req, res) => {
     const b = req.body;
     const check = await accountSchema.find({ userName: b.userName }, { userName: true });
-    if (check) return res.status(200).json({ nameTaken: true });
+    if (check[0]) return res.status(200).json({ nameTaken: true });
     return res.status(200).json({ nameTaken: false });
 });
 

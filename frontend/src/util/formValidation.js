@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Email Validation
 export async function emailVali(x) {
-    // Check if entered
+    // Check if empty
     if (isEmpty(x)) return ("Field is required");
 
     // Check format
@@ -11,15 +11,15 @@ export async function emailVali(x) {
     if (!res) return ('Email not valid');
 
     // Check db if email is used
-    res = axios.post('/accounts/checkEmail', { email: x });
-    if (res.emailTaken) return ('Account already exists with this email');
+    res = await axios.post('/accounts/checkEmail', { email: x });
+    if (res.data.emailTaken) return ('Account already exists with this email');
 
     return null;
 }
 
 // Password Validation
 export function passVali(x) {
-    // Check if entered
+    // Check if empty
     if (isEmpty(x)) return ("Field is required");
 
     // Check length
@@ -30,7 +30,7 @@ export function passVali(x) {
 
 // Password Match
 export function passMatch(x, y) {
-    // Check if entered
+    // Check if empty
     if (isEmpty(x)) return ("Field is required");
 
     // Check if pass's match
@@ -39,25 +39,43 @@ export function passMatch(x, y) {
     return null;
 }
 
+// User Exists Check
 export async function userVali(x) {
-    // Check if entered
+    // Check if empty
     if (isEmpty(x)) return ("Field is required");
 
     // Check DB for username
-    const res = axios.post('/accounts/checkUserName', { userName: x });
-    if (res.nameTaken) return ('User name taken');
+    const res = await axios.post('/accounts/checkUserName', { userName: x });
+    if (res.data.nameTaken) return ('User name taken');
 
     return null;
 }
 
+// Dob Check
 export function dobVali(x) {
     // Check if entered
-    if (isEmpty(x)) return ("Field is required");
+    const test = !isNaN(new Date(x));
+    if (!test) return ("Field is required");
+
+    // Age Check 
+    if (getAge(x) < 17) return ("Must be 18 or older to create an account");
 
     return null;
 }
 
+//////////////////////////////// Helper Functions ////////////////////////
 function isEmpty(str) {
     if (str === "") return true;
     return false;
+}
+
+function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
 }
