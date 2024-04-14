@@ -31,9 +31,9 @@ function VideoPage() {
         setInfo(res.data);
     }
 
-    useEffect(() => {
-        console.log(info)
-    }, [info]);
+    // useEffect(() => {
+    //     console.log(info)
+    // }, [info]);
 
 
     return (<div className="container">

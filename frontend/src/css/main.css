@@ -62,7 +62,7 @@ form {
 }
 /* Main Stuff */
 .container {
-    background-color: #04AA6D;
+    
 }
 
 .homeVideoBox {
@@ -104,13 +104,13 @@ form {
     width: 100%;
 }
 .horizontalThumbnailImage {
-    width: 50%;
+    width: 40%;
     max-width: 200px;
     border-radius: 16px;
     box-shadow: 2px 2px 1px 1px #888888;
 }
 .cardTextContainerHorizontal {
-    width: 50%;
+    width: 60%;
     text-align: center;
 }
 
@@ -139,7 +139,7 @@ form {
     width: 70%;
 }
 .videoPlayer {
-    margin: 16px;
+    margin: 0px 16px 0px 16px;
     border-radius: 16px;
     margin-left: auto;
     margin-right: auto;
@@ -147,8 +147,9 @@ form {
 .sidePreviewContainer {
     margin: 16px;
     margin-left: auto;
-    margin-right: auto;
+    padding-right: 22px;
     height: 100vh;
+    width: 28%;
     overflow-y: scroll;
 }
 
