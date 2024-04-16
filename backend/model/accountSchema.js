@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const accountSchema = new mongoose.Schema({
     email: {
         type: String,
-        require: true
+        require: true,
     },
     password: {
         type: String,

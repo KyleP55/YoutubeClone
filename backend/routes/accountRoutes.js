@@ -39,8 +39,14 @@ router.post('/createAccount', async (req, res) => {
         });
 
         const newAccount = await account.save();
+        console.log('created account')
 
-        res.status(201).json(newAccount);
+        const sig = { id: newAccount._id, email: newAccount.email, userName: newAccount.userName };
+        const accessToken = generateToken(sig);
+
+        console.log('signed token')
+
+        res.status(201).json({ token: accessToken });
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
@@ -49,7 +55,7 @@ router.post('/createAccount', async (req, res) => {
 // Log In
 router.post('/login', async (req, res) => {
     const b = req.body;
-    const account = await accountSchema.find({ email: b.email });
+    const account = await accountSchema.find({ email: b.email }, { email: 1, password: 1, userName: 1, _id: 1 });
 
     if (account[0] == undefined) return res.json({ message: "User not found" });
 
@@ -57,7 +63,7 @@ router.post('/login', async (req, res) => {
     try {
         if (bcrypt.compare(b.password, account[0].password)) {
             //Create JWT
-            const sig = { email: account[0].email, name: account[0].name };
+            const sig = { id: account[0]._id, email: account[0].email, userName: account[0].userName };
             const accessToken = generateToken(sig);
             //const refreshToken = jwt.sign(sig, process.env.REFRESH_TOKEN_SECRET);
 
@@ -73,7 +79,7 @@ router.post('/login', async (req, res) => {
 router.post('/checkEmail', async (req, res) => {
     const b = req.body;
     const check = await accountSchema.find({ email: b.email }, { email: true });
-    console.log(check)
+
     if (check[0]) return res.status(200).json({ emailTaken: true });
     return res.status(200).json({ emailTaken: false });
 });
@@ -82,13 +88,14 @@ router.post('/checkEmail', async (req, res) => {
 router.post('/checkUserName', async (req, res) => {
     const b = req.body;
     const check = await accountSchema.find({ userName: b.userName }, { userName: true });
+
     if (check[0]) return res.status(200).json({ nameTaken: true });
     return res.status(200).json({ nameTaken: false });
 });
 
 //Generate Token
 function generateToken(sig) {
-    return jwt.sign(sig, process.env.JWT_CODE, { expiresIn: '30s' });
+    return jwt.sign(sig, process.env.JWT_SECRET, { expiresIn: '60s' });
 }
 
 

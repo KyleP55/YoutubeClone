@@ -1,8 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
-const url = 'mongodb://127.0.0.1:27017/VideoProject';
+const url = process.env.DATABASE_URL;
 
 const accountRouter = require("./routes/accountRoutes.js");
 const videoRouter = require("./routes/videoRoutes.js");
