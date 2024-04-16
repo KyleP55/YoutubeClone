@@ -7,10 +7,15 @@ const url = process.env.DATABASE_URL;
 
 const accountRouter = require("./routes/accountRoutes.js");
 const videoRouter = require("./routes/videoRoutes.js");
+const authCheck = require("./middleware/authCheck.js");
+const authVideoRouter = require("./routes/authVideoRoutes.js");
 
 app.use(express.json());
-app.use('/accounts', accountRouter)
+
+app.use('/accounts', accountRouter);
 app.use('/videos', videoRouter);
+app.use(authCheck);
+app.use('/videos', authVideoRouter);
 
 
 try {

@@ -31,7 +31,7 @@ function HomePage() {
 
     return (<div>
         <SideNav />
-        <div className="homeVideoBox">
+        <div className="page homeVideoBox">
             <h1>Newest Videos</h1>
             <div className='videoGrid'>
                 {allVids && allVids.map((i) => {

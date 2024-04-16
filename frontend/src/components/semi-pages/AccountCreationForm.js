@@ -42,10 +42,14 @@ function AccountCreationForm({ created }) {
             dob: dob
         }
 
-        await axios.post('/accounts/createAccount', info)
-            .then((res) => {
-                created();
-            })
+        try {
+            await axios.post('/accounts/createAccount', info)
+                .then((res) => {
+                    created();
+                });
+        } catch (err) {
+            alert(err);
+        }
     }
 
     return (<>

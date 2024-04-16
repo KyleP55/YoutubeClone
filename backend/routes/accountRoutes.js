@@ -63,9 +63,10 @@ router.post('/login', async (req, res) => {
     try {
         if (bcrypt.compare(b.password, account[0].password)) {
             //Create JWT
-            const sig = { id: account[0]._id, email: account[0].email, userName: account[0].userName };
+            let sig = { id: account[0]._id, email: account[0].email, userName: account[0].userName };
             const accessToken = generateToken(sig);
-            //const refreshToken = jwt.sign(sig, process.env.REFRESH_TOKEN_SECRET);
+            console.log(accessToken)
+            sig = { id: account[0]._id, email: account[0].email, userName: account[0].userName, token: accessToken };
 
             //rfTokens.push(refreshToken);
             return res.status(200).json(sig);

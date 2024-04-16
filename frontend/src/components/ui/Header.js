@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { IoAddCircleOutline } from "react-icons/io5";
 import axios from "axios";
+import { UserContext } from "../../context/userContext";
 
 import logo from "../../images/logo.png";
 import LogInPopUp from "./LogInPopUp";
@@ -9,6 +10,7 @@ import LogInPopUp from "./LogInPopUp";
 import "../../css/header.css";
 
 function Header() {
+    const userContext = useContext(UserContext);
     const [logInWindow, setLogInWindow] = useState(false);
 
     function toggleWindow() {
@@ -19,9 +21,31 @@ function Header() {
         }
     }
 
-    function submitHandler(email, password) {
+    const unauthed = <>
+        {logInWindow && <LogInPopUp toggle={toggleWindow} />}
+        <a onClick={toggleWindow} className="accountText">
+            Log In
+        </a>
+        <Link to="/account/login" className="accountText">
+            Create Account
+        </Link>
+        <Link to="/upload">
+            <IoAddCircleOutline size="50px" />
+        </Link>
+    </>
 
-    }
+    const authed = <>
+        <p>Welcome Back {userContext.userName}!</p>
+        <a onClick={console.log('todo')} className="accountText">
+            Log Out
+        </a>
+        <Link to="/account/login" className="accountText">
+            My Account
+        </Link>
+        <Link to="/upload">
+            <IoAddCircleOutline size="50px" />
+        </Link>
+    </>
 
     return (<>
         <div className="header">
@@ -32,16 +56,8 @@ function Header() {
 
             </div>
             <div className="accountBars">
-                {logInWindow && <LogInPopUp toggle={toggleWindow} submit={submitHandler} />}
-                <a onClick={toggleWindow} className="accountText">
-                    Log In
-                </a>
-                <Link to="/account/login" className="accountText">
-                    Create Account
-                </Link>
-                <Link to="/upload">
-                    <IoAddCircleOutline size="50px" />
-                </Link>
+                {!userContext.id && unauthed}
+                {userContext.id && authed}
             </div>
         </div>
         <Outlet />
