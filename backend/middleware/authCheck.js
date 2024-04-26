@@ -20,7 +20,6 @@ module.exports = (req, res, next) => {
         console.log('completed')
         next();
     } catch (err) {
-        console.log('sheeitt');
         return next(err);
     }
 
